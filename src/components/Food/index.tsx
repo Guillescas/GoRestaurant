@@ -14,7 +14,7 @@ interface IFoodComponentProps {
 }
 
 const Food = ({ food, handleDelete, handleEditFood }: IFoodComponentProps) => {
-  const [isAvailable, setIsAvailable] = useState(false);
+  const [isAvailable, setIsAvailable] = useState(food.available);
 
   async function toggleAvailable() {
     if (!food) {
