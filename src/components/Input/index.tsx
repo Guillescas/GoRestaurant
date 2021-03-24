@@ -4,6 +4,7 @@ import {
   useState,
   useCallback,
   ReactElement,
+  InputHTMLAttributes,
 } from 'react';
 
 import { useField } from '@unform/core';
@@ -11,12 +12,12 @@ import { useField } from '@unform/core';
 import { Container } from './styles';
 import { IconBaseProps } from 'react-icons/lib';
 
-interface IInputProps {
+interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   icon?: React.ComponentType<IconBaseProps>;
 }
 
-const Input = ({ name, icon: Icon, ...rest }: IInputProps) => {
+const Input = ({ name, icon: Icon, ...rest }: IInputProps): ReactElement => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [isFocused, setIsFocused] = useState(false);
