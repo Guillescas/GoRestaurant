@@ -1,4 +1,4 @@
-export interface IFood {
+export interface IFoodProps {
   id: number;
   name: string;
   description: string;
