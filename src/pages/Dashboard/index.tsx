@@ -9,11 +9,11 @@ import api from '../../services/api';
 
 import { FoodsContainer } from './styles';
 
-import { IFood } from '../../types';
+import { IFoodProps } from '../../types';
 
 const Dashboard = () => {
-  const [foods, setFoods] = useState<IFood[]>([]);
-  const [editingFood, setEditingFood] = useState<IFood>();
+  const [foods, setFoods] = useState<IFoodProps[]>([]);
+  const [editingFood, setEditingFood] = useState<IFoodProps>();
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
@@ -21,7 +21,7 @@ const Dashboard = () => {
     api.get('/foods').then(response => setFoods(response.data));
   }, []);
 
-  async function handleAddFood(food: IFood) {
+  async function handleAddFood(food: IFoodProps) {
     try {
       const response = await api.post('/foods', {
         ...food,
@@ -34,7 +34,7 @@ const Dashboard = () => {
     }
   }
 
-  async function handleUpdateFood(food: IFood) {
+  async function handleUpdateFood(food: IFoodProps) {
     if (!editingFood) {
       return;
     }
@@ -71,7 +71,7 @@ const Dashboard = () => {
     setEditModalOpen(!editModalOpen);
   }
 
-  function handleEditFood(food: IFood) {
+  function handleEditFood(food: IFoodProps) {
     setEditingFood(food);
     setEditModalOpen(true);
   }
